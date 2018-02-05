@@ -1,15 +1,5 @@
 <h1>Messages</h1>
 
-<% for message in @messages %>
-  <div class="message">
-    <div class="created_at"><%= message.created_at.strftime("%B %d, %Y") %></div>
-    <div class="content">
-      <%= message.content %>
-    </div>
-    <div class="actions">
-      <%= link_to "Destroy", message, :confirm => "Are you sure?", :method => :delete %>
-    </div>
-  </div>
-<% end %>
+<%= nested_messages Message.arrange(order: :created_at) %>
 
 <%= render "form" %>

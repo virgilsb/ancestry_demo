@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
   def index
-    @messages = Message.all
     @message = Message.new
   end
 
@@ -9,7 +8,7 @@ class MessagesController < ApplicationController
   end
 
   def new
-    @message = Message.new
+    @message = Message.new(parent_id: params[:parent_id])
   end
 
   def create
@@ -30,6 +29,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :parent_id)
   end
 end

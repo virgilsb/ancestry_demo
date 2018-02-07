@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204140350) do
+ActiveRecord::Schema.define(version: 20180207203334) do
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "happy_week_nodes", force: :cascade do |t|
+    t.string "activity"
+    t.string "operator"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_happy_week_nodes_on_ancestry"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
